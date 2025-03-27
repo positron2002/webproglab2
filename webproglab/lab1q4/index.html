@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bill Generator</h2>
+    <div class="container">
+        <label>Select Brand:</label>
+        <select id="brand">
+            <option value="HP">HP</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Apple">Apple</option>
+        </select>
+
+        <label>Select Product Type:</label><br>
+        <input type="checkbox" id="mobile" value="mobile"> Mobile<br>
+        <input type="checkbox" id="laptop" value="laptop"> Laptop<br>
+
+        <label>Enter Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <button id="produceBill">Produce Bill</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#produceBill").click(function() {
+                var brand = $("#brand").val();
+                var quantity = parseInt($("#quantity").val());
+
+                if (isNaN(quantity) || quantity <= 0) {
+                    alert("Please enter a valid quantity.");
+                    return;
+                }
+
+                var total = 0;
+
+                // Pricing logic
+                var prices = {
+                    HP: { mobile: 20000, laptop: 50000 },
+                    Nokia: { mobile: 15000, laptop: 45000 },
+                    Samsung: { mobile: 25000, laptop: 55000 },
+                    Motorola: { mobile: 18000, laptop: 48000 },
+                    Apple: { mobile: 70000, laptop: 120000 }
+                };
+
+                if ($("#mobile").is(":checked")) {
+                    total += prices[brand].mobile * quantity;
+                }
+
+                if ($("#laptop").is(":checked")) {
+                    total += prices[brand].laptop * quantity;
+                }
+
+                if (total === 0) {
+                    alert("Please select at least one product.");
+                } else {
+                    alert("Total amount for " + quantity + " " + brand + " product(s): ₹" + total);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
