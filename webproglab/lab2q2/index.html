@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee CRUD Operations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Employee Management</h2>
+        
+        <!-- Add Employee Button -->
+        <div class="text-end mb-3">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">Add Employee</button>
+        </div>
+
+        <!-- Employee Table -->
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTable">
+                <!-- Dynamic Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Employee Modal -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addEmployeeForm">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" id="empName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="empEmail" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <input type="text" id="empDept" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Employee</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Employee Modal -->
+    <div class="modal fade" id="editEmployeeModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editEmployeeForm">
+                        <input type="hidden" id="editEmpId">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" id="editEmpName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="editEmpEmail" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            <input type="text" id="editEmpDept" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Update Employee</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let employees = [];
+        let empId = 1;
+
+        // Function to add employee
+        document.getElementById("addEmployeeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("empName").value;
+            let email = document.getElementById("empEmail").value;
+            let dept = document.getElementById("empDept").value;
+            employees.push({ id: empId++, name, email, dept });
+            updateTable();
+            document.getElementById("addEmployeeForm").reset();
+            bootstrap.Modal.getInstance(document.getElementById("addEmployeeModal")).hide();
+        });
+
+        // Function to update table
+        function updateTable() {
+            let tableBody = document.getElementById("employeeTable");
+            tableBody.innerHTML = "";
+            employees.forEach(emp => {
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${emp.id}</td>
+                        <td>${emp.name}</td>
+                        <td>${emp.email}</td>
+                        <td>${emp.dept}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" onclick="editEmployee(${emp.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteEmployee(${emp.id})">Delete</button>
+                        </td>
+                    </tr>`;
+            });
+        }
+
+        // Function to delete employee
+        function deleteEmployee(id) {
+            employees = employees.filter(emp => emp.id !== id);
+            updateTable();
+        }
+
+        // Function to edit employee
+        function editEmployee(id) {
+            let emp = employees.find(emp => emp.id === id);
+            document.getElementById("editEmpId").value = emp.id;
+            document.getElementById("editEmpName").value = emp.name;
+            document.getElementById("editEmpEmail").value = emp.email;
+            document.getElementById("editEmpDept").value = emp.dept;
+            let editModal = new bootstrap.Modal(document.getElementById("editEmployeeModal"));
+            editModal.show();
+        }
+
+        // Function to update employee details
+        document.getElementById("editEmployeeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let id = parseInt(document.getElementById("editEmpId").value);
+            let name = document.getElementById("editEmpName").value;
+            let email = document.getElementById("editEmpEmail").value;
+            let dept = document.getElementById("editEmpDept").value;
+            let index = employees.findIndex(emp => emp.id === id);
+            employees[index] = { id, name, email, dept };
+            updateTable();
+            bootstrap.Modal.getInstance(document.getElementById("editEmployeeModal")).hide();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

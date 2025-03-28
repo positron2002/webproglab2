@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Magazine Cover</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?fashion,magazine') no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        .cover {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .magazine-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .sub-title {
+            font-size: 1.8rem;
+            font-style: italic;
+        }
+        .highlight-badge {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 20px;
+        }
+        .featured-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .featured-card:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .btn-subscribe {
+            background: #ffc107;
+            color: black;
+            font-weight: bold;
+        }
+        .btn-subscribe:hover {
+            background: #ff9800;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Magazine Cover Section -->
+    <div class="cover">
+        <h1 class="magazine-title">Elite Trends</h1>
+        <h2 class="sub-title">The Future of Fashion & Lifestyle</h2>
+        <span class="highlight-badge">April 2025 Edition</span>
+
+        <div class="container mt-4">
+            <div class="row">
+                <!-- Featured Story 1 -->
+                <div class="col-md-4">
+                    <div class="featured-card text-center p-3">
+                        <h4>🔥 Top 10 Fashion Trends</h4>
+                        <p>Discover the latest trends ruling 2025</p>
+                    </div>
+                </div>
+
+                <!-- Featured Story 2 -->
+                <div class="col-md-4">
+                    <div class="featured-card text-center p-3">
+                        <h4>🌍 Sustainable Fashion</h4>
+                        <p>Eco-friendly clothing brands you should know</p>
+                    </div>
+                </div>
+
+                <!-- Featured Story 3 -->
+                <div class="col-md-4">
+                    <div class="featured-card text-center p-3">
+                        <h4>💄 Beauty Secrets Revealed</h4>
+                        <p>Insider tips from celebrity stylists</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscribe Button -->
+        <div class="mt-4">
+            <button class="btn btn-subscribe btn-lg">Subscribe Now</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
