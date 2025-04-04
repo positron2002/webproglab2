@@ -1,0 +1,720 @@
+1.1
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table and Image Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        table {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        #tableImageWrapper {
+            position: relative;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Table and Image Animation</h2>
+    <div id="tableImageWrapper" class="container">
+        <table>
+            <tr><td>Row 1 Col 1</td><td>Row 1 Col 2</td><td>Row 1 Col 3</td></tr>
+            <tr><td>Row 2 Col 1</td><td>Row 2 Col 2</td><td>Row 2 Col 3</td></tr>
+            <tr><td>Row 3 Col 1</td><td>Row 3 Col 2</td><td>Row 3 Col 3</td></tr>
+        </table>
+        <img src="https://via.placeholder.com/100" alt="Sample Image">
+    </div>
+    <button id="moveBtn">Move Right to Left</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#moveBtn").click(function() {
+                $("#tableImageWrapper").animate({left: "-=100px"}, "slow");
+            });
+        });
+    </script>
+
+</body>
+</html>
+--------
+1.2
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator input {
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .calculator button {
+            margin: 5px;
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+    <div class="calculator">
+        <input type="text" id="num1"> 
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="num2">
+        <button id="calculate">=</button>
+        <input type="text" id="result" readonly>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#calculate").click(function() {
+                var num1 = parseFloat($("#num1").val());
+                var num2 = parseFloat($("#num2").val());
+                var operator = $("#operator").val();
+                var result;
+                
+                if (isNaN(num1) || isNaN(num2)) {
+                    alert("Please enter valid numbers!");
+                    return;
+                }
+
+                switch(operator) {
+                    case "+": result = num1 + num2; break;
+                    case "-": result = num1 - num2; break;
+                    case "*": result = num1 * num2; break;
+                    case "/": result = num2 !== 0 ? num1 / num2 : "Error"; break;
+                    default: result = "Invalid";
+                }
+
+                $("#result").val(result);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+---------
+
+1.3
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card Designer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .controls {
+            width: 300px;
+            text-align: left;
+        }
+        .card {
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+        }
+        .card img {
+            width: 100px;
+            margin-top: 10px;
+        }
+        .card p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Design Your Birthday Card</h2>
+    <div class="container">
+        <div class="controls">
+            <label>Choose a background color:</label>
+            <select id="bgColor">
+                <option value="yellow">Yellow</option>
+                <option value="lightblue">Light Blue</option>
+                <option value="pink">Pink</option>
+                <option value="lightgreen">Light Green</option>
+            </select>
+            <br><br>
+
+            <label>Choose a font:</label>
+            <select id="fontFamily">
+                <option value="Verdana">Verdana</option>
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+            <br><br>
+
+            <label>Specify a numeric font size:</label>
+            <input type="number" id="fontSize" value="25">
+            <br><br>
+
+            <label>Choose a border style:</label>
+            <select id="borderStyle">
+                <option value="none">None</option>
+                <option value="dotted">Dotted</option>
+                <option value="solid">Solid</option>
+                <option value="double">Double</option>
+            </select>
+            <br><br>
+
+            <input type="checkbox" id="addImage" checked> Add the Default Picture
+            <br><br>
+
+            <label>Enter the greeting text below:</label>
+            <textarea id="greetingText">Happy Birthday, and many more</textarea>
+            <br><br>
+
+            <button id="updateCard">Update</button>
+        </div>
+
+        <div id="birthdayCard" class="card" style="background-color: yellow; font-family: Verdana; font-size: 25px; border-style: solid;">
+            <p id="cardText">Happy Birthday, and many more</p>
+            <img id="cardImage" src="https://via.placeholder.com/100" alt="Birthday Cake">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#updateCard").click(function() {
+                $("#birthdayCard").css("background-color", $("#bgColor").val());
+                $("#birthdayCard").css("font-family", $("#fontFamily").val());
+                $("#birthdayCard").css("font-size", $("#fontSize").val() + "px");
+                $("#birthdayCard").css("border-style", $("#borderStyle").val());
+                $("#cardText").text($("#greetingText").val());
+
+                if ($("#addImage").is(":checked")) {
+                    $("#cardImage").show();
+                } else {
+                    $("#cardImage").hide();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+----------
+
+
+1.4
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            text-align: left;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bill Generator</h2>
+    <div class="container">
+        <label>Select Brand:</label>
+        <select id="brand">
+            <option value="HP">HP</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Apple">Apple</option>
+        </select>
+
+        <label>Select Product Type:</label><br>
+        <input type="checkbox" id="mobile" value="mobile"> Mobile<br>
+        <input type="checkbox" id="laptop" value="laptop"> Laptop<br>
+
+        <label>Enter Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <button id="produceBill">Produce Bill</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#produceBill").click(function() {
+                var brand = $("#brand").val();
+                var quantity = parseInt($("#quantity").val());
+
+                if (isNaN(quantity) || quantity <= 0) {
+                    alert("Please enter a valid quantity.");
+                    return;
+                }
+
+                var total = 0;
+
+                // Pricing logic
+                var prices = {
+                    HP: { mobile: 20000, laptop: 50000 },
+                    Nokia: { mobile: 15000, laptop: 45000 },
+                    Samsung: { mobile: 25000, laptop: 55000 },
+                    Motorola: { mobile: 18000, laptop: 48000 },
+                    Apple: { mobile: 70000, laptop: 120000 }
+                };
+
+                if ($("#mobile").is(":checked")) {
+                    total += prices[brand].mobile * quantity;
+                }
+
+                if ($("#laptop").is(":checked")) {
+                    total += prices[brand].laptop * quantity;
+                }
+
+                if (total === 0) {
+                    alert("Please select at least one product.");
+                } else {
+                    alert("Total amount for " + quantity + " " + brand + " product(s): ₹" + total);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+-----------
+
+3.1
+
+
+import statistics
+
+# Read N numbers from the user
+N = int(input("Enter the number of elements: "))
+numbers = [float(input(f"Enter number {i+1}: ")) for i in range(N)]
+
+# Compute mean, variance, and standard deviation
+mean_value = statistics.mean(numbers)
+variance_value = statistics.variance(numbers)
+std_dev_value = statistics.stdev(numbers)
+
+# Print the results
+print(f"Mean: {mean_value:.2f}")
+print(f"Variance: {variance_value:.2f}")
+print(f"Standard Deviation: {std_dev_value:.2f}")
+
+
+
+3.2
+
+
+class Student:
+    def __init__(self, name, roll_no, department, address, gender, marks):
+        self.name = name
+        self.roll_no = roll_no
+        self.department = department
+        self.address = address
+        self.gender = gender
+        self.marks = marks
+        self.total_marks = sum(marks)
+        self.percentage = self.total_marks / len(marks)
+
+def get_student_details():
+    name = input("Enter Name: ")
+    roll_no = input("Enter Roll No: ")
+    department = input("Enter Department: ")
+    address = input("Enter Address: ")
+    gender = input("Enter Gender: ")
+    marks = [int(input(f"Enter marks for subject {i+1}: ")) for i in range(3)]
+    return Student(name, roll_no, department, address, gender, marks)
+
+def display_student_details(student):
+    print(f"\nStudent Details:\nName: {student.name}\nRoll No: {student.roll_no}\nDepartment: {student.department}\nAddress: {student.address}\nGender: {student.gender}\nTotal Marks: {student.total_marks}\nPercentage: {student.percentage:.2f}%")
+
+def main():
+    students = []
+    n = int(input("Enter the number of students: "))
+    for _ in range(n):
+        students.append(get_student_details())
+
+    for student in students:
+        display_student_details(student)
+
+    max_marks_student = max(students, key=lambda s: s.total_marks)
+    min_marks_student = min(students, key=lambda s: s.total_marks)
+    fail_students = [student.name for student in students if any(mark < 10 for mark in student.marks)]
+
+    print(f"\nStudent with Maximum Marks: {max_marks_student.name}")
+    print(f"Student with Minimum Marks: {min_marks_student.name}")
+    if fail_students:
+        print(f"Students who failed (marks < 10): {', '.join(fail_students)}")
+    else:
+        print("No students failed.")
+
+if __name__ == "__main__":
+    main()
+
+------------------
+3.3
+
+from collections import Counter
+
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        text = file.read()
+    return text
+
+def count_words(text):
+    words = text.split()
+    word_counts = Counter(words)
+    return word_counts
+
+def print_top_words(word_counts, top_n=10):
+    sorted_word_counts = word_counts.most_common(top_n)
+    for word, count in sorted_word_counts:
+        print(f"{word}: {count}")
+
+def main():
+    file_path = input("Enter the path to the text file: ")
+    text = read_file(file_path)
+    word_counts = count_words(text)
+    print_top_words(word_counts)
+
+if __name__ == "__main__":
+    main()
+
+
+
+-------------
+
+3.4
+
+
+
+def sort_file_contents(input_file, output_file):
+    try:
+        # Read contents from the input file
+        with open(input_file, 'r') as file:
+            lines = file.readlines()
+        
+        # Sort the lines
+        sorted_lines = sorted(lines)
+
+        # Write sorted lines to the output file
+        with open(output_file, 'w') as file:
+            file.writelines(sorted_lines)
+
+        print(f"Sorted contents written to {output_file}")
+    
+    except FileNotFoundError:
+        print("Error: The input file was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Example usage
+input_filename = "input.txt"   # Replace with your input file name
+output_filename = "sorted_output.txt"  # Replace with your desired output file name
+
+sort_file_contents(input_filename, output_filename)
+
+
+
+
+-------------------------------
+
+
+
+4.1
+
+class Subsets:
+    def __init__(self, nums):
+        self.nums = nums
+
+    def generate_subsets(self):
+        result = []
+        self._backtrack(sorted(self.nums), 0, [], result)
+        return result
+
+    def _backtrack(self, nums, start, path, result):
+        result.append(path)
+        for i in range(start, len(nums)):
+            self._backtrack(nums, i + 1, path + [nums[i]], result)
+
+# Taking user input
+user_input = input("Enter numbers separated by spaces: ")
+nums = list(map(int, user_input.split()))  # Convert input into a list of integers
+
+# Generate subsets
+subsets = Subsets(nums)
+print(subsets.generate_subsets())
+
+---------------------
+4.2
+
+class PairFinder:
+    def __init__(self, nums, target):
+        self.nums = nums
+        self.target = target
+
+    def find_pair(self):
+        num_to_index = {}
+        for index, num in enumerate(self.nums):
+            complement = self.target - num
+            if complement in num_to_index:
+                return (num_to_index[complement], index, complement, num)
+            num_to_index[num] = index
+        return None
+
+# Example usage:
+user_input = input("Enter numbers separated by spaces: ")
+nums = list(map(int, user_input.split()))
+target = 9
+pair_finder = PairFinder(nums, target)
+result = pair_finder.find_pair()
+if result:
+    index1, index2, num1, num2 = result
+    print(f"Pair found at indices: {index1} and {index2}")
+    print(f"Numbers: {num1} and {num2}")
+else:
+    print("No pair found.")
+---------------------------
+
+4.3
+
+class Inventory:
+    def __init__(self):
+        self.items = {}
+
+    def add_item(self):
+        item_id = input("Enter Item ID: ")
+        if item_id in self.items:
+            print(f"Item with ID {item_id} already exists.")
+        else:
+            item_name = input("Enter Item Name: ")
+            stock_count = int(input("Enter Stock Count: "))
+            price = float(input("Enter Price: "))
+            self.items[item_id] = {
+                'item_name': item_name,
+                'stock_count': stock_count,
+                'price': price
+            }
+            print(f"Item {item_name} added successfully.")
+
+    def update_item(self):
+        item_id = input("Enter Item ID to update: ")
+        if item_id in self.items:
+            item_name = input("Enter new Item Name (leave blank to keep current): ")
+            stock_count = input("Enter new Stock Count (leave blank to keep current): ")
+            price = input("Enter new Price (leave blank to keep current): ")
+            if item_name:
+                self.items[item_id]['item_name'] = item_name
+            if stock_count:
+                self.items[item_id]['stock_count'] = int(stock_count)
+            if price:
+                self.items[item_id]['price'] = float(price)
+            print(f"Item with ID {item_id} updated successfully.")
+        else:
+            print(f"Item with ID {item_id} does not exist.")
+
+    def check_item_details(self):
+        item_id = input("Enter Item ID to check: ")
+        if item_id in self.items:
+            item = self.items[item_id]
+            print(f"Item ID: {item_id}")
+            print(f"Item Name: {item['item_name']}")
+            print(f"Stock Count: {item['stock_count']}")
+            print(f"Price: {item['price']}")
+        else:
+            print(f"Item with ID {item_id} does not exist.")
+
+def main():
+    inventory = Inventory()
+    while True:
+        print("\nInventory Management System")
+        print("1. Add Item")
+        print("2. Update Item")
+        print("3. Check Item Details")
+        print("4. Exit")
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            inventory.add_item()
+        elif choice == '2':
+            inventory.update_item()
+        elif choice == '3':
+            inventory.check_item_details()
+        elif choice == '4':
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+-------------------------------
+4.4
+
+
+class Restaurant:
+    def __init__(self):
+        self.menu_items = {}
+        self.book_table = {}
+        self.customer_orders = {}
+
+    def add_item_to_menu(self):
+        item_id = input("Enter Item ID: ")
+        item_name = input("Enter Item Name: ")
+        price = float(input("Enter Price: "))
+        self.menu_items[item_id] = {'item_name': item_name, 'price': price}
+        print(f"Item {item_name} added to the menu.")
+
+    def book_tables(self):
+        table_id = input("Enter Table ID: ")
+        customer_name = input("Enter Customer Name: ")
+        self.book_table[table_id] = customer_name
+        print(f"Table {table_id} booked for {customer_name}.")
+
+    def customer_order(self):
+        order_id = input("Enter Order ID: ")
+        table_id = input("Enter Table ID: ")
+        item_id = input("Enter Item ID: ")
+        quantity = int(input("Enter Quantity: "))
+        if table_id in self.book_table and item_id in self.menu_items:
+            if order_id not in self.customer_orders:
+                self.customer_orders[order_id] = []
+            self.customer_orders[order_id].append({'table_id': table_id, 'item_id': item_id, 'quantity': quantity})
+            print(f"Order {order_id} placed for Table {table_id}.")
+        else:
+            print("Invalid Table ID or Item ID.")
+
+    def print_menu(self):
+        print("\nMenu:")
+        for item_id, details in self.menu_items.items():
+            print(f"Item ID: {item_id}, Item Name: {details['item_name']}, Price: {details['price']}")
+
+    def print_table_reservations(self):
+        print("\nTable Reservations:")
+        for table_id, customer_name in self.book_table.items():
+            print(f"Table ID: {table_id}, Customer Name: {customer_name}")
+
+    def print_customer_orders(self):
+        print("\nCustomer Orders:")
+        for order_id, orders in self.customer_orders.items():
+            print(f"Order ID: {order_id}")
+            for order in orders:
+                item_name = self.menu_items[order['item_id']]['item_name']
+                print(f"  Table ID: {order['table_id']}, Item Name: {item_name}, Quantity: {order['quantity']}")
+
+def main():
+    restaurant = Restaurant()
+    while True:
+        print("\nRestaurant Management System")
+        print("1. Add Item to Menu")
+        print("2. Book Table")
+        print("3. Take Customer Order")
+        print("4. Print Menu")
+        print("5. Print Table Reservations")
+        print("6. Print Customer Orders")
+        print("7. Exit")
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            restaurant.add_item_to_menu()
+        elif choice == '2':
+            restaurant.book_tables()
+        elif choice == '3':
+            restaurant.customer_order()
+        elif choice == '4':
+            restaurant.print_menu()
+        elif choice == '5':
+            restaurant.print_table_reservations()
+        elif choice == '6':
+            restaurant.print_customer_orders()
+        elif choice == '7':
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+-----------------------------------
+
+
+
+
