@@ -362,6 +362,320 @@
 
 
 -----------
+2.1
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Bio-Data</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h4 class="text-center">Student Bio-Data Form</h4>
+    <form>
+      <!-- Name -->
+      <div class="mb-2">
+        <label>Name:</label>
+        <input type="text" class="form-control">
+      </div>
+
+      <!-- Email -->
+      <div class="mb-2">
+        <label>Email:</label>
+        <input type="email" class="form-control">
+      </div>
+
+      <!-- Gender -->
+      <div class="mb-2">
+        <label>Gender:</label><br>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+      </div>
+
+      <!-- Hobbies -->
+      <div class="mb-2">
+        <label>Hobbies:</label><br>
+        <input type="checkbox"> Reading
+        <input type="checkbox"> Sports
+        <input type="checkbox"> Music
+      </div>
+
+      <!-- Education Table -->
+      <label>Education:</label>
+      <table class="table table-bordered">
+        <tr>
+          <th>Exam</th>
+          <th>Board</th>
+          <th>Year</th>
+          <th>%</th>
+        </tr>
+        <tr>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+        </tr>
+        <tr>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+          <td><input class="form-control"></td>
+        </tr>
+      </table>
+
+      <!-- Submit -->
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+----------------------
+
+
+
+2.2
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee CRUD Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+    .container {
+      margin-top: 40px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .table th, .table td {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3 class="text-center mb-4">Employee Management (CRUD)</h3>
+
+    <!-- CREATE / UPDATE Form -->
+    <form id="employeeForm">
+      <div class="row g-2 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Employee Name">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Position</label>
+          <input type="text" class="form-control" placeholder="Position">
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">Add Employee</button>
+      </div>
+    </form>
+
+    <!-- READ Table -->
+    <h5 class="mt-5">Employee List</h5>
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example data rows -->
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>john@example.com</td>
+          <td>Manager</td>
+          <td>
+            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Smith</td>
+          <td>jane@example.com</td>
+          <td>Developer</td>
+          <td>
+            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+--------------------
+
+
+
+2.3
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Bootstrap Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+
+    <!-- Top Section -->
+    <div class="p-3 bg-light rounded mb-3">
+      <h4>Top Section</h4>
+
+      <div class="input-group mb-2">
+        <span class="input-group-text">Name</span>
+        <input type="text" class="form-control">
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-secondary">Cancel</button>
+      </div>
+
+      <span class="badge bg-success ms-2">Top Area</span>
+    </div>
+
+    <!-- Bottom Section - 3 parts -->
+    <div class="row">
+      <!-- Part 1 -->
+      <div class="col-md-4 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h5>Search</h5>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search...">
+            <button class="btn btn-outline-secondary">Go</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="col-md-4 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h5>Actions</h5>
+          <div class="btn-group">
+            <button class="btn btn-info">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+          <span class="badge bg-danger ms-2">2 Tasks</span>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="col-md-4 mb-3">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h5>Links</h5>
+          <button class="btn btn-success mb-1 w-100">Dashboard</button>
+          <button class="btn btn-outline-primary w-100">Profile</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+
+
+
+----------------------
+
+
+2.4
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Class Timetable</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+
+  <!-- Carousel -->
+  <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://via.placeholder.com/800x250?text=Class+Timetable" class="d-block w-100">
+      </div>
+      <div class="carousel-item">
+        <img src="https://via.placeholder.com/800x250?text=Stay+Organized!" class="d-block w-100">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Timetable -->
+  <table class="table table-bordered text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Day</th>
+        <th>9-10</th>
+        <th>10-11</th>
+        <th>11-12</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Monday</td>
+        <td>Math</td>
+        <td>Physics</td>
+        <td>CS</td>
+      </tr>
+      <tr>
+        <td>Tuesday</td>
+        <td>English</td>
+        <td>Biology</td>
+        <td>Lab</td>
+      </tr>
+      <tr>
+        <td>Wednesday</td>
+        <td>Chemistry</td>
+        <td>Math</td>
+        <td>Sports</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+---------------------------
+
+
 
 3.1
 
@@ -717,4 +1031,200 @@ if __name__ == "__main__":
 
 
 
+5.1
 
+django-admin startproject studentform
+cd studentform
+python manage.py startapp student
+python manage.py runserver
+
+
+
+
+
+
+views.py
+
+from django.shortcuts import render
+
+def student_view(request):
+    submitted_data = ""
+    percentage = None
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        dob = request.POST.get('dob')
+        address = request.POST.get('address')
+        contact = request.POST.get('contact')
+        email = request.POST.get('email')
+        english = int(request.POST.get('english', 0))
+        physics = int(request.POST.get('physics', 0))
+        chemistry = int(request.POST.get('chemistry', 0))
+
+        total = english + physics + chemistry
+        percentage = round(total / 3, 2)
+
+        submitted_data = (
+            f"Name: {name}\n"
+            f"Date of Birth: {dob}\n"
+            f"Address: {address}\n"
+            f"Contact Number: {contact}\n"
+            f"Email ID: {email}\n"
+            f"English: {english}, Physics: {physics}, Chemistry: {chemistry}\n"
+            f"Percentage: {percentage}%"
+        )
+
+    return render(request, 'student/student_form.html', {
+        'submitted_data': submitted_data,
+        'percentage': percentage
+    })
+
+
+Template: student/templates/student/student_form.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+</head>
+<body>
+    <h2>Enter Student Details</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Name: <input type="text" name="name" required></p>
+        <p>Date of Birth: <input type="date" name="dob" required></p>
+        <p>Address: <textarea name="address" required></textarea></p>
+        <p>Contact Number: <input type="text" name="contact" required></p>
+        <p>Email ID: <input type="email" name="email" required></p>
+        <p>English Marks: <input type="number" name="english" required></p>
+        <p>Physics Marks: <input type="number" name="physics" required></p>
+        <p>Chemistry Marks: <input type="number" name="chemistry" required></p>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if submitted_data %}
+        <h3>Submitted Info:</h3>
+        <textarea rows="10" cols="80" readonly>{{ submitted_data }}</textarea><br>
+        <label>Total Percentage: {{ percentage }}%</label>
+    {% endif %}
+</body>
+</html>
+
+
+student/urls.py
+
+from django.urls import path
+from .views import student_view
+
+urlpatterns = [
+    path('', student_view),
+]
+
+
+
+studentform/urls.py
+
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('student.urls')),
+]
+
+
+
+
+---------------------------
+
+
+5.2
+
+
+
+
+views.py
+
+
+from django.shortcuts import render
+from datetime import datetime
+
+def promotion_eligibility_view(request):
+    result = ""
+    employee_ids = ['E001', 'E002', 'E003', 'E004']  # Static list; can be dynamic from DB too
+
+    if request.method == 'POST':
+        doj_str = request.POST.get('doj')
+        if doj_str:
+            doj = datetime.strptime(doj_str, "%Y-%m-%d")
+            today = datetime.today()
+            experience_years = (today - doj).days / 365
+            result = "YES" if experience_years >= 5 else "NO"
+
+    return render(request, 'employee/promotion_check.html', {
+        'employee_ids': employee_ids,
+        'result': result
+    })
+
+
+
+
+employee/templates/employee/promotion_check.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promotion Eligibility</title>
+</head>
+<body>
+    <h2>Promotion Eligibility Checker</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            Select Employee ID:
+            <select name="emp_id" required>
+                {% for emp_id in employee_ids %}
+                    <option value="{{ emp_id }}">{{ emp_id }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            Date of Joining:
+            <input type="date" name="doj" required>
+        </p>
+        <button type="submit">Am I Eligible for Promotion?</button>
+    </form>
+
+    {% if result %}
+        <h3>Eligible for Promotion? <label>{{ result }}</label></h3>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+employee/urls.py
+
+
+from django.urls import path
+from .views import promotion_eligibility_view
+
+urlpatterns = [
+    path('', promotion_eligibility_view),
+]
+
+
+studentform/urls.py or your main project’s urls.py
+
+
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('employee.urls')),
+]
+
+
+
+
+python manage.py runserver
